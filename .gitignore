@@ -1,0 +1,12 @@
+#Files of IntelliJ IDEA
+.idea/*
+jfx-pokemon.iml
+
+#Files of Eclipse IDE
+.settings/*
+.classpath
+.project
+
+#Bin files
+bin/*
+.class/
