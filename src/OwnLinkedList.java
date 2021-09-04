@@ -20,29 +20,31 @@ public class OwnLinkedList <T extends Comparable<T>>{
         Node<T> newNode = new Node<>(element);
         if(first == null){
             first = newNode;
-            last = first;
+             last = first;
             size++;
         }else if(first.getNext()==null){
         	size++;
-        	if(first.compareTo(newNode.getValue())>=0) {
+        	if(first.compareTo(newNode.getValue())<=0) {
         		first.setNext(newNode);
-        		last= newNode;
         	}else{
         		last=first;
         		first=newNode;
         		first.setNext(last);
-        		
         	}
         }else{
         	int i=1;
         	Node<T> temp=first;
-        	boolean pos = false;
-        	while(i<=size && temp.compareTo(newNode.getValue())<=0) {
+        	Node<T> backPointer = temp;
+        	while(i<=size && temp.compareTo(newNode.getValue())>0) {
         		i++;
-        		temp = temp.getNext();	
-        	}	
-        	temp.setNext(temp);
-        	temp = newNode;	
+        		backPointer = temp;
+        		temp = temp.getNext();
+
+        	}
+            newNode.setNext(temp);
+        	backPointer.setNext(newNode);
+        	size++;
+
         }
     }
 
