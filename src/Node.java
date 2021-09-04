@@ -1,12 +1,12 @@
-;
 
-public class Node<T>{
+public class Node<T extends Comparable<T>>{
+	
     private T value;
 
     private Node<T> next;
 
     public Node(T value) {
-        this.value = value;
+        this.setValue(value);
     }
 
     public Node<T> getNext() {
@@ -17,5 +17,16 @@ public class Node<T>{
         this.next = next;
     }
 
+	public T getValue() {
+		return value;
+	}
 
+	public void setValue(T value) {
+		this.value = value;
+	}
+	
+	public int compareTo(T newValue) {
+		return value.compareTo(newValue); 	
+    }
+	
 }
