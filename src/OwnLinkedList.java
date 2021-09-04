@@ -1,7 +1,7 @@
 
 
 
-public class OwnLinkedList <T >{
+public class OwnLinkedList <T>{
     private Node<T> first;
     private Node<T> last;
     private int size;
@@ -16,7 +16,10 @@ public class OwnLinkedList <T >{
         return first;
     }
 
-    public void add(T element) {
+
+
+    /**
+    private void add(Node<T> newNode,  Node<T> last){
         Node<T> newNode = new Node<>(element);
         if(first == null){
             first = newNode;
@@ -31,9 +34,7 @@ public class OwnLinkedList <T >{
         }
     }
 
-    private void add(Node<T> newNode,  Node<T> last){
-
-    }
+     **/
 
 
 
