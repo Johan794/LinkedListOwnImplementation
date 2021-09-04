@@ -35,15 +35,21 @@ public class OwnLinkedList <T extends Comparable<T>>{
         	int i=1;
         	Node<T> temp=first;
         	Node<T> backPointer = temp;
-        	while(i<=size && temp.compareTo(newNode.getValue())>0) {
+        	while(i<=size && temp.compareTo(newNode.getValue())<0) {
         		i++;
         		backPointer = temp;
         		temp = temp.getNext();
 
         	}
+          //  System.out.println("El nuevo nodo: "+newNode.getValue());
+        //    System.out.println("El nodo mayor al nuevo: "+temp.getValue());
+        //    System.out.println("El nodo menor al nuevo: "+backPointer.getValue());
             newNode.setNext(temp);
         	backPointer.setNext(newNode);
         	size++;
+
+
+
 
         }
     }
@@ -68,17 +74,22 @@ public class OwnLinkedList <T extends Comparable<T>>{
         if(index>size){
             return null;
         }else {
-            int i = 1;
+            int i = 0;
             Node<T> node = first;
             boolean post = false;
             while (i<=index && !post){
+                //System.out.println("iteracion : "+i);
             	if(i==index) {
+                   // System.out.println("Rompe el ciclo con true");
             		post=true;
             	}else {
             		node = node.getNext();
             		i++;
             	}
             }
+           // System.out.println("Tamaño: "+size);
+           // System.out.println("Posicion: "+index);
+           // System.out.println("Valor nodo: "+node.getValue());
             return node;
         }
     }
