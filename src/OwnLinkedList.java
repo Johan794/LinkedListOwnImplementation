@@ -1,7 +1,7 @@
 
 
 
-public class OwnLinkedList <T >{
+public class OwnLinkedList <T extends Comparable<T>>{
     private Node<T> first;
     private Node<T> last;
     private int size;
@@ -23,11 +23,26 @@ public class OwnLinkedList <T >{
             last = first;
             size++;
         }else if(first.getNext()==null){
-            first.setNext(newNode);
-            last= newNode;
+        	size++;
+        	if(first.compareTo(newNode.getValue())>=0) {
+        		first.setNext(newNode);
+        		last= newNode;
+        	}else{
+        		last=first;
+        		first=newNode;
+        		first.setNext(last);
+        		
+        	}
         }else{
-
-            add(newNode,last);
+        	int i=1;
+        	Node<T> temp=first;
+        	boolean pos = false;
+        	while(i<=size && temp.compareTo(newNode.getValue())<=0) {
+        		i++;
+        		temp = temp.getNext();	
+        	}	
+        	temp.setNext(temp);
+        	temp = newNode;	
         }
     }
 
@@ -57,9 +72,14 @@ public class OwnLinkedList <T >{
         }else {
             int i = 1;
             Node<T> node = first;
-            while (i<=index){
-                node = node.getNext();
-                i++;
+            boolean post = false;
+            while (i<=index && !post){
+            	if(i==index) {
+            		post=true;
+            	}else {
+            		node = node.getNext();
+            		i++;
+            	}
             }
             return node;
         }
