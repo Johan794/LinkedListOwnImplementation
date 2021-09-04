@@ -46,10 +46,6 @@ public class OwnLinkedList <T extends Comparable<T>>{
         }
     }
 
-    private void add(Node<T> newNode,  Node<T> last){
-
-    }
-
 
 
     public Node<T> getLast() {
@@ -109,7 +105,11 @@ public class OwnLinkedList <T extends Comparable<T>>{
        return position;
     }
 
-
-
+    public void removeAll() {
+    	first = null;
+    	last = null;
+    	size = 0;
+    }
+    
 
 }
